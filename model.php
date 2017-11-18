@@ -23,22 +23,33 @@ class model {
         $db = dbConn::getConnection();
         $statement = $db->prepare($sql);
         $statement->execute();
-        echo 'I just saved record' . $this->id;
+        echo 'I just saved record id = ' . $this->id.'<br>';
     }
     private function update() {
         $modelName1=static::$modelName;
         $tableName = $modelName1::tableName();
-        $record1=$tableName::findOne($this->id);
-        $array = get_object_vars($record1);
+        $array = get_object_vars($this);
         array_pop($array);
-        print_r($array);
-        $columnString = array_keys($array);
-        $columnString1=implode(',', $columnString);
-        $valueString = "'".implode("','", $array)."'";
-        echo 'I just updated record' . $this->id;
+        $temp=' ';
+        $array1='';
+        foreach($array as $key=>$value){
+          $array1.=$temp.$key.'="'.$value.'"';
+          $temp=", ";
+        }
+        $sql= 'update '.$tableName.' SET'.$array1.' where id='.$this->id;
+        $db = dbConn::getConnection();
+        $statement = $db->prepare($sql);
+        $statement->execute();
+        echo 'I just updated record id = ' . $this->id.'<br>';
     }
     public function delete() {
-        echo 'I just deleted record' . $this->id;
+        $modelName1=static::$modelName;
+        $tableName = $modelName1::tableName();
+        $sql= 'delete from '.$tableName.' where id='.$this->id;
+        $db = dbConn::getConnection();
+        $statement = $db->prepare($sql);
+        $statement->execute();
+        echo 'I just deleted record id = ' . $this->id.'<br>';
     }
     
 }

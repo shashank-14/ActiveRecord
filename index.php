@@ -1,8 +1,5 @@
 <?php
 
-//require 'collection.php';
-//require 'model.php';
-
 class Manage{
   public static function autoload($class){
     include $class.'.php';
@@ -10,8 +7,6 @@ class Manage{
 }
 
 spl_autoload_register(array('Manage','autoload'));
-
-
 
 ini_set('display_errors', 'On');
 error_reporting(E_ALL);
@@ -21,12 +16,13 @@ $obl=new main();
 class main{
 
   public function __construct(){
-     echo 'Accounts Records.<br>';
+     echo 'Existing Accounts Records.<br>';
      accounts::findAll();
+     echo '<br>';
      
      echo 'Creating new id 13 in accounts table.<br>';
      $record = new account();
-     //$record->id='';
+     $record->id='';
      $record->email='abc@gmail.com';
      $record->fname='abc';
      $record->lname='xyz';
@@ -34,23 +30,39 @@ class main{
      $record->birthday='2000-05-05';
      $record->gender='male';
      $record->password='123';
-     //$record->save();
+     $record->save();
+     echo 'After adding record.<br>';
+     accounts::findAll();
+     echo '<br>';
      
      echo 'Searching new created id 13 in accounts table.<br>';
      $id=13;
-     $record1=accounts::findOne($id);
-     print_r($record1);
+     accounts::findOne($id);
      
      echo '<br>';
-     echo 'updating email of id=13.<br>';
+     echo 'updating details of id=13.<br>';
      $record = new account();
      $record->id=13;
-     $record1=accounts::findOne($id);
-     $record=$record1;
-     $record1->email='xyz@gmail.com';
-     $record1->save();
-    }
+     $record->email='xyz@gmail.com';
+     $record->fname='qqq';
+     $record->lname='www';
+     $record->phone='923-111-1111';
+     $record->birthday='1999-02-03';
+     $record->gender='female';
+     $record->password='123';
+     $record->save();
+     echo 'After update.<br>';
+     accounts::findOne($id);
+     echo '<br>';
+     //print_r($record1);
     
+    echo 'To delete id=13 from accounts.<br>';
+    $record=new account();
+    $record->id=13;
+    $record->delete();
+    echo 'After Delete id=13.<br>';
+    accounts::findAll();
+    }
    
 }
 
