@@ -1,6 +1,5 @@
 <?php
-include_once 'dbConn.php';
-//include_once 'abc.php';
+
 
 class collection {
     static public function create() {
@@ -49,9 +48,9 @@ class collection {
         $class = static::$modelName;
         $statement->setFetchMode(PDO::FETCH_CLASS, $tableName);
         $recordsSet =  $statement->fetchAll();
-        //return $recordsSet[0];
+        return $recordsSet[0];
         //print_r($recordsSet);
-        echo '<table border=2>';
+        /*echo '<table border=2>';
         $db1=dbConn::getConnection();
         $sql1 = 'SHOW COLUMNS FROM '.$tableName;
         $stmt1 = $db1->prepare($sql1);
@@ -68,12 +67,9 @@ class collection {
           }
           echo "<tr>";
         }    
-        echo '</table>';
+        echo '</table>';*/
         
     }
-}
-class accounts extends collection {
-    protected static $modelName = 'accounts';
 }
 
 ?>
