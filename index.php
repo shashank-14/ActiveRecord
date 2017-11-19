@@ -62,6 +62,56 @@ class main{
     $record->delete();
     echo 'After Delete id=13.<br>';
     accounts::findAll();
+    echo '<br>';
+    echo'-------------------------------------------------------------------------------------------------------------------------------------------------';
+    echo '<br>';
+    
+    echo 'Existing Todos Records.<br>';
+     todos::findAll();
+     echo '<br>';
+     
+     echo 'Creating new id 13 in todos table.<br>';
+     $record = new todo();
+     $record->id='';
+     $record->owneremail='abc@gmail.com';
+     $record->ownerid='7';
+     $record->createddate='2017-09-09 00:00:00';
+     $record->duedate='2017-10-10 00:00:00';
+     $record->message='Active Record';
+     $record->isdone='0';
+     $record->save();
+     echo 'After adding record.<br>';
+     todos::findAll();
+     echo '<br>';
+     
+     echo 'Searching new created id 13 in todos table.<br>';
+     $id=13;
+     todos::findOne($id);
+     
+     echo '<br>';
+     echo 'updating details of id=13.<br>';
+     $record = new todo();
+     $record->id=13;
+     $record->owneremail='xyz@gmail.com';
+     $record->ownerid='2';
+     $record->createddate='2017-07-07 00:00:00';
+     $record->duedate='2017-08-08 00:00:00';
+     $record->message='Active Record update';
+     $record->isdone='1';
+     $record->save();
+     echo 'After update.<br>';
+     todos::findOne($id);
+     echo '<br>';
+    
+    echo 'To delete id=13 from todos.<br>';
+    $record=new todo();
+    $record->id=13;
+    $record->delete();
+    echo 'After Delete id=13.<br>';
+    todos::findAll();
+    echo '<br>';
+    
+    
     }
    
 }
