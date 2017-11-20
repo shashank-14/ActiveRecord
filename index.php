@@ -16,11 +16,16 @@ $obl=new main();
 class main{
 
   public function __construct(){
-     echo 'Existing Accounts Records.<br>';
+     $display='';
+     $display= '<h3>Existing Accounts Records.</h3><br>';
+     display::printThis($display);
      accounts::findAll();
-     echo '<br>';
+     $display= '<br>';
+     display::printThis($display);
      
-     echo 'Creating new id 13 in accounts table.<br>';
+     $display='';
+     $display= '<h3>Creating new id 13 in accounts table.</h3><br>';
+     display::printThis($display);
      $record = new account();
      $record->id='';
      $record->email='abc@gmail.com';
@@ -31,16 +36,22 @@ class main{
      $record->gender='male';
      $record->password='123';
      $record->save();
-     echo 'After adding record.<br>';
+     $display= 'After adding record.<br>';
+     display::printThis($display);
      accounts::findAll();
-     echo '<br>';
+     $display= '<br>';
+     display::printThis($display);
      
-     echo 'Searching new created id 13 in accounts table.<br>';
+     $display='';
+     $display= '<h3>Searching new created id 13 in accounts table.</h3><br>';
+     display::printThis($display);
      $id=13;
      accounts::findOne($id);
      
-     echo '<br>';
-     echo 'updating details of id=13.<br>';
+     $display='';
+     $display.= '<br>';
+     $display.= '<h3>updating details of id=13.</h3><br>';
+     display::printThis($display);
      $record = new account();
      $record->id=13;
      $record->email='xyz@gmail.com';
@@ -51,26 +62,37 @@ class main{
      $record->gender='female';
      $record->password='123';
      $record->save();
-     echo 'After update.<br>';
+     $display= 'After update.<br>';
+     display::printThis($display);
      accounts::findOne($id);
-     echo '<br>';
-     //print_r($record1);
-    
-    echo 'To delete id=13 from accounts.<br>';
+     $display= '<br>';
+     display::printThis($display);
+     
+     $display='';
+    $display= '<h3>To delete id=13 from accounts.</h3><br>';
+    display::printThis($display);
     $record=new account();
     $record->id=13;
     $record->delete();
-    echo 'After Delete id=13.<br>';
+    $display= 'After Delete id=13.<br>';
+    display::printThis($display);
     accounts::findAll();
-    echo '<br>';
-    echo'-------------------------------------------------------------------------------------------------------------------------------------------------';
-    echo '<br>';
-    
-    echo 'Existing Todos Records.<br>';
-     todos::findAll();
-     echo '<br>';
+    $display='';
+    $display.= '<br>';
+    $display.='-------------------------------------------------------------------------------------------------------------------------------------------------';
+    $display.= '<br>';
+    display::printThis($display);
      
-     echo 'Creating new id 13 in todos table.<br>';
+     $display='';
+    $display.= '<h3>Existing Todos Records.</h3><br>';
+     display::printThis($display);
+     todos::findAll();
+     $display= '<br>';
+     display::printThis($display);
+     
+     $display='';
+     $display= '<h3>Creating new id 13 in todos table.</h3><br>';
+     display::printThis($display);
      $record = new todo();
      $record->id='';
      $record->owneremail='abc@gmail.com';
@@ -80,16 +102,22 @@ class main{
      $record->message='Active Record';
      $record->isdone='0';
      $record->save();
-     echo 'After adding record.<br>';
+     $display= 'After adding record.<br>';
+     display::printThis($display);
      todos::findAll();
-     echo '<br>';
+     $display= '<br>';
+     display::printThis($display);
      
-     echo 'Searching new created id 13 in todos table.<br>';
+     $display='';
+     $display.= '<h3>Searching new created id 13 in todos table.</h3><br>';
+     display::printThis($display);
      $id=13;
      todos::findOne($id);
      
-     echo '<br>';
-     echo 'updating details of id=13.<br>';
+     $display='';
+     $display.= '<br>';
+     $display.= '<h3>Updating details of id=13.</h3><br>';
+     display::printThis($display);
      $record = new todo();
      $record->id=13;
      $record->owneremail='xyz@gmail.com';
@@ -99,18 +127,23 @@ class main{
      $record->message='Active Record update';
      $record->isdone='1';
      $record->save();
-     echo 'After update.<br>';
+     $display= 'After update.<br>';
+     display::printThis($display);
      todos::findOne($id);
-     echo '<br>';
-    
-    echo 'To delete id=13 from todos.<br>';
+     $display= '<br>';
+    display::printThis($display);
+     
+     $display='';
+    $display.= '<h3>To delete id=13 from todos.</h3><br>';
+    display::printThis($display);
     $record=new todo();
     $record->id=13;
     $record->delete();
-    echo 'After Delete id=13.<br>';
+    $display= 'After Delete id=13.<br>';
+    display::printThis($display);
     todos::findAll();
-    echo '<br>';
-    
+    $display= '<br>';
+     display::printThis($display);
     
     }
    

@@ -23,7 +23,9 @@ class model {
         $db = dbConn::getConnection();
         $statement = $db->prepare($sql);
         $statement->execute();
-        echo 'I just saved record id = ' . $this->id.'<br>';
+        $display='';
+        $display= 'I just saved record id = ' . $this->id.'<br>';
+        display::printThis($display);
     }
     private function update() {
         $modelName1=static::$modelName;
@@ -40,7 +42,9 @@ class model {
         $db = dbConn::getConnection();
         $statement = $db->prepare($sql);
         $statement->execute();
-        echo 'I just updated record id = ' . $this->id.'<br>';
+        $display='';
+        $display= 'I just updated record id = ' . $this->id.'<br>';
+        display::printThis($display);
     }
     public function delete() {
         $modelName1=static::$modelName;
@@ -49,7 +53,9 @@ class model {
         $db = dbConn::getConnection();
         $statement = $db->prepare($sql);
         $statement->execute();
-        echo 'I just deleted record id = ' . $this->id.'<br>';
+        $display='';
+        $display= 'I just deleted record id = ' . $this->id.'<br>';
+        display::printThis($display);
     }
     
 }

@@ -20,7 +20,8 @@ class collection {
         }
         
         public static function displayTable($recordsSet,$tableName){
-          echo '<table border=2>';
+          $display='';
+          $display.='<table border=2>';
           $db1=dbConn::getConnection();
           $sql1 = 'SHOW COLUMNS FROM '.$tableName;
           $stmt1 = $db1->prepare($sql1);
@@ -28,16 +29,17 @@ class collection {
           $headers=$stmt1->fetchAll(PDO::FETCH_COLUMN);
         
           foreach($headers as $col){
-              echo "<td>$col</td>";
+              $display.="<td>$col</td>";
               }
           foreach( $recordsSet as $row) {
-          echo "<tr>";
+          $display.="<tr>";
           foreach($row as $col){
-            echo "<td>$col</td>";
+            $display.="<td>$col</td>";
             }
-            echo "<tr>";
+            $display.="<tr>";
           }    
-          echo '</table>';
+          $display.='</table>';
+          display::printThis($display);
         }
                   
     static public function findOne($id) {
